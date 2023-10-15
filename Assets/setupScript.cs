@@ -8,7 +8,10 @@ public class setupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //set variables to default dropdown setting
+        gameBoardScript.difficulty = 0;
+        gameBoardScript.environment = 0;
+        gameBoardScript.size = 4;
     }
 
     // Update is called once per frame
@@ -31,12 +34,15 @@ public class setupScript : MonoBehaviour
         switch(index){
             case 0:
                 //easy
+                gameBoardScript.difficulty = 0;
                 break;
             case 1:
                 //medium
+                gameBoardScript.difficulty = 1;
                 break;
             case 2:
                 //hard
+                gameBoardScript.difficulty = 2;
                 break;
         }
     }
@@ -45,12 +51,15 @@ public class setupScript : MonoBehaviour
         switch(index){
             case 0:
                 //4x4
+                gameBoardScript.size = 4;
                 break;
             case 1:
                 //5x5
+                gameBoardScript.size = 5;
                 break;
             case 2:
                 //6x6
+                gameBoardScript.size = 6;
                 break;
         }
     }
@@ -59,15 +68,19 @@ public class setupScript : MonoBehaviour
         switch(index){
             case 0:
                 //urban
+                gameBoardScript.environment = 0;
                 break;
             case 1:
                 //plains
+                gameBoardScript.environment = 1;
                 break;
             case 2:
                 //forest
+                gameBoardScript.environment = 2;
                 break;
             case 3:
                 //desert
+                gameBoardScript.environment = 3;
                 break;
         }
     }
