@@ -29,6 +29,10 @@ public class setupScript : MonoBehaviour
         SceneManager.LoadSceneAsync("GameBoard");
     }
 
+    public void goToHelp(){
+        SceneManager.LoadSceneAsync("HelpMenu");
+    }
+
     //dropdown options
     public void DiffDropdown(int index){
         switch(index){
