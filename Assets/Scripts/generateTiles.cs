@@ -21,7 +21,7 @@ public class generateTiles : MonoBehaviour
     //public Image[] images;
     public int[] MarkedSpace;
     public List<int> Numbers = new List<int>();
-    public GameManager gameManager;
+    //public GameManager gameManager;
     public static int difficulty;
     public static int environment;
     public static int size;
@@ -103,7 +103,7 @@ public class generateTiles : MonoBehaviour
             test.sprite = tileSprites[Numbers[i]];
         }
 
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
         //fill Marked Spaces with zeroes
         for (int i = 0; i < MarkedSpace.Length; i++)
         {
