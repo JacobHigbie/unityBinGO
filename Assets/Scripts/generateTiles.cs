@@ -27,10 +27,13 @@ public class generateTiles : MonoBehaviour
     public static int size;
     public Image test;
 
+    public bool bingoHad;
+
     // Start is called before the first frame update
     private void Start(){
         SetupTiles();
         SetupBoard();
+        //bingoHad = false;
     }
 
     void SetupTiles(){
@@ -141,11 +144,13 @@ public class generateTiles : MonoBehaviour
 
         foreach(var sol in solution)
         {
-            if(sol == 5)
+            if(sol == 5 && bingoHad == false)
             {
                 SumOfMarkedSpace++;
                 Debug.Log(gameObject.name + " " + SumOfMarkedSpace);
                 BingoTxt[SumOfMarkedSpace].SetActive(true);
+                SceneManager.LoadSceneAsync("WinPopup");
+                bingoHad = true;
             }
         }
     }
