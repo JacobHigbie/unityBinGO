@@ -8,8 +8,10 @@ using UnityEngine.SceneManagement;
 public class tiles{
     public bool isChecked;
     public string objName;
-    public int posX;
-    public int posY;
+    public int diffUrban = 0;
+    public int diffPlains = 0;
+    public int diffForest = 0;
+    public int diffDesert = 0;
 }
 
 public class generateTiles : MonoBehaviour
@@ -78,19 +80,53 @@ public class generateTiles : MonoBehaviour
             tiles tempTile = new tiles();
             tilesArr[i] = tempTile;
             tilesArr[i].isChecked = false;
-            tilesArr[i].posX = -1;
-            tilesArr[i].posY = -1;
         }
 
-        //name each tile
+        //setup tile names and difficulty
         tilesArr[0].objName = "Bag";
+        tilesArr[0].diffUrban = 3;
+        tilesArr[0].diffPlains = 1;
+        tilesArr[0].diffForest = 1;
+        tilesArr[0].diffDesert = 1;
+
         tilesArr[1].objName = "Ball";
+        tilesArr[1].diffUrban = 2;
+
         tilesArr[2].objName = "Bench";
+        tilesArr[2].diffUrban = 3;
+        tilesArr[2].diffPlains = 1;
+        tilesArr[2].diffForest = 1;
+        tilesArr[2].diffDesert = 1;
+
         tilesArr[3].objName = "Billboard with Food";
+        tilesArr[3].diffUrban = 3;
+        tilesArr[3].diffPlains = 1;
+        tilesArr[3].diffForest = 1;
+        tilesArr[3].diffDesert = 1;
+
         tilesArr[4].objName = "Billboard with a Person";
+        tilesArr[4].diffUrban = 3;
+        tilesArr[4].diffPlains = 1;
+        tilesArr[4].diffForest = 1;
+        tilesArr[4].diffDesert = 1;
+
         tilesArr[5].objName = "Billboard with Phone Number";
+        tilesArr[5].diffUrban = 3;
+        tilesArr[5].diffPlains = 1;
+        tilesArr[5].diffForest = 1;
+        tilesArr[5].diffDesert = 1;
+
         tilesArr[6].objName = "Bird of Prey";
+        tilesArr[6].diffPlains = 1;
+        tilesArr[6].diffForest = 1;
+        tilesArr[6].diffDesert = 1;
+
         tilesArr[7].objName = "Blue Vehicle";
+        tilesArr[7].diffUrban = 3;
+        tilesArr[7].diffPlains = 2;
+        tilesArr[7].diffForest = 2;
+        tilesArr[7].diffDesert = 2;
+
         tilesArr[8].objName = "Boat";
         tilesArr[9].objName = "Body of Water";
         tilesArr[10].objName = "Bridge";
