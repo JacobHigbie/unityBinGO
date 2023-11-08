@@ -22,11 +22,14 @@ public class generateTiles : MonoBehaviour
     public Sprite[] tileSprites;
     public int[] isMarked;
     public List<int> Numbers = new List<int>();
+    public List<int> RefNumbers = new List<int>();
     public static int difficulty;
     public static int environment;
     public static int size;
     public bool bingoHad;
     public GameObject[] spriteObj;
+    public tiles[] tilesArr = new tiles[51];
+
 
     // Start is called before the first frame update
     private void Start(){
@@ -71,16 +74,99 @@ public class generateTiles : MonoBehaviour
         //put 0-50 on a list
         for (int i = 0; i <= 50; i++)
         {
-            Numbers.Add(i);
+            RefNumbers.Add(i);
         }
 
-        //shuffle list
-        for (int i = 0; i < Numbers.Count; i++)
+        //select 25 numbers.
+        //choose 0-50, then compare to refnumbers
+        //if it is on refnumbers, compare with environment and difficulty
+        //based on that, maybe retry with a new number
+        //otherwise, add it and set that number on refnumbers to -1, so you dont re-pick it
+        for (int i = 0; i < 25; i++)
         {
-            int RandomNum = Random.Range(0, 50);
-            int temp = Numbers[RandomNum];
-            Numbers[RandomNum] = Numbers[i];
-            Numbers[i] = temp;
+            bool retry = true;
+            int RandomNumA;
+            int RandomNumB = 0;
+            while(retry){                                   //go until you get a valid number
+                RandomNumA = Random.Range(0, 50);
+                if(RefNumbers[RandomNumA] == RandomNumA){   //prevents repeat numbers
+                    retry = false;
+                    if(environment == 0){                           //urban
+                        if(tilesArr[RandomNumA].diffUrban == 0){    //if diff = 0, reroll
+                            retry = true;
+                        }else if (difficulty == 0){
+                            RandomNumB = Random.Range(1, 7);       //on easy, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffUrban * 2;
+                            if(RandomNumB < 7){                    //if total is < 7, restart
+                                retry = true;
+                            }
+                        }else if (difficulty == 2){
+                            RandomNumB = Random.Range(1, 7);       //on hard, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffUrban * 2;
+                            if(RandomNumB > 7){                    //if total is > 7, restart
+                                retry = true;
+                            }
+                        }
+                    }else if(environment == 1){                     //plains
+                        if(tilesArr[RandomNumA].diffPlains == 0){    //if diff = 0, reroll
+                            retry = true;
+                        }else if (difficulty == 0){
+                            RandomNumB = Random.Range(1, 7);       //on easy, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffPlains * 2;
+                            if(RandomNumB < 7){                    //if total is < 7, restart
+                                retry = true;
+                            }
+                        }else if (difficulty == 2){
+                            RandomNumB = Random.Range(1, 7);       //on hard, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffPlains * 2;
+                            if(RandomNumB > 7){                    //if total is > 7, restart
+                                retry = true;
+                            }
+                        }
+                    }else if(environment == 2){                     //forest
+                        if(tilesArr[RandomNumA].diffForest == 0){    //if diff = 0, reroll
+                            retry = true;
+                        }else if (difficulty == 0){
+                            RandomNumB = Random.Range(1, 7);       //on easy, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffForest * 2;
+                            if(RandomNumB < 7){                    //if total is < 7, restart
+                                retry = true;
+                            }
+                        }else if (difficulty == 2){
+                            RandomNumB = Random.Range(1, 7);       //on hard, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffForest * 2;
+                            if(RandomNumB > 7){                    //if total is > 7, restart
+                                retry = true;
+                            }
+                        }
+                    }else if(environment == 3){                     //desert
+                        if(tilesArr[RandomNumA].diffDesert == 0){    //if diff = 0, reroll
+                            retry = true;
+                        }else if (difficulty == 0){
+                            RandomNumB = Random.Range(1, 7);       //on easy, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffDesert * 2;
+                            if(RandomNumB < 7){                    //if total is < 7, restart
+                                retry = true;
+                            }
+                        }else if (difficulty == 2){
+                            RandomNumB = Random.Range(1, 7);       //on hard, roll 1 through 7 and add (environmental diff * 2)
+                            RandomNumB += tilesArr[RandomNumA].diffDesert * 2;
+                            if(RandomNumB > 7){                    //if total is > 7, restart
+                                retry = true;
+                            }
+                        }
+                    }
+                } 
+
+                if(retry == false){             //if you made it here and retry = false, add the number to the list
+                    Numbers.Add(RandomNumA);
+                    RefNumbers[RandomNumA] = -1;
+                }else{
+                    Debug.Log("REROLL TRIGGERED:");
+                    Debug.Log(tilesArr[RandomNumA].objName);
+                    Debug.Log(RandomNumB);
+                }
+            }
         }
 
         //put images on corresponding buttons based on list
@@ -103,11 +189,6 @@ public class generateTiles : MonoBehaviour
     }
 
     void SetupTiles(){
-        Debug.Log(difficulty);
-        Debug.Log(environment);
-        Debug.Log(size);
-
-        tiles[] tilesArr = new tiles[51];
         for(int i = 0; i<=50; i++) {
             tiles tempTile = new tiles();
             tilesArr[i] = tempTile;
