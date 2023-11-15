@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 849342822600352945}
   - component: {fileID: 2239198451031139444}
   - component: {fileID: 6854443767241239988}
-  - component: {fileID: 3567161268507388742}
+  - component: {fileID: 2909773708455649979}
   m_Layer: 5
   m_Name: Button00
   m_TagString: BingoTileButton
@@ -250,9 +250,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3567161268507388742}
-        m_TargetAssemblyTypeName: bingoBoardTileDescription, Assembly-CSharp
-        m_MethodName: TileDescription
+      - m_Target: {fileID: 2909773708455649979}
+        m_TargetAssemblyTypeName: bingoTileButtonPressed, Assembly-CSharp
+        m_MethodName: bingoTilePressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3567161268507388742
+--- !u!114 &2909773708455649979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8526976510014568725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 109d2fde9d15c254c8dcd882a24a4b9f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c213a3d0f7bf09468a784b591aa0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 0}
+  spriteobject: {fileID: 709180057778646850}
