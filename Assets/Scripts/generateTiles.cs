@@ -27,62 +27,152 @@ public class generateTiles : MonoBehaviour
     public static int environment;
     public static int size;
     public bool bingoHad;
-    public GameObject[] spriteObj;
+    public List<GameObject> spriteObj;
     public tiles[] tilesArr = new tiles[51];
-
+    public GameObject button00, bingoTable;
+    public Transform bingoTableTransform, canvasTransform;
+    public int numButtons;
 
     // Start is called before the first frame update
     private void Start(){
+        numButtons = size*size;
+        spriteObj = new List<GameObject>();
+        //bingoTable.GetComponent<RectTransform>().position = new Vector3(0, 60, 0);
+        bingoTableTransform = canvasTransform;
         SetupTiles();
+        makeButtons();
         SetupBoard();
         //bingoHad = false;
     }
 
+    public void makeButtons(){      //fill the table with button objects
+        bingoTableTransform = bingoTable.transform;
+
+        for(int i=0; i<numButtons; i++){
+            GameObject tempButton = Instantiate(button00, bingoTableTransform);
+
+            spriteObj.Add(tempButton);
+        }
+    }
+
     public void CheckWin(){
-        //if any of these are =5, then a bingo was found
-        int case1 = isMarked[0] + isMarked[5] + isMarked[10] + isMarked[15] + isMarked[20];
-        int case2 = isMarked[1] + isMarked[6] + isMarked[11] + isMarked[16] + isMarked[21];
-        int case3 = isMarked[2] + isMarked[7] + isMarked[12] + isMarked[17] + isMarked[22];
-        int case4 = isMarked[3] + isMarked[8] + isMarked[13] + isMarked[18] + isMarked[23];
-        int case5 = isMarked[4] + isMarked[9] + isMarked[14] + isMarked[19] + isMarked[24];
-        int case6 = isMarked[0] + isMarked[1] + isMarked[2] + isMarked[3] + isMarked[4];
-        int case7 = isMarked[5] + isMarked[6] + isMarked[7] + isMarked[8] + isMarked[9];
-        int case8 = isMarked[10] + isMarked[11] + isMarked[12] + isMarked[13] + isMarked[14];
-        int case9 = isMarked[15] + isMarked[16] + isMarked[17] + isMarked[18] + isMarked[19];
-        int case10 = isMarked[20] + isMarked[21] + isMarked[22] + isMarked[23] + isMarked[24];
-        int case11 = isMarked[0] + isMarked[6] + isMarked[12] + isMarked[18] + isMarked[24];
-        int case12 = isMarked[4] + isMarked[8] + isMarked[12] + isMarked[16] + isMarked[20];   
+        if(size == 4){
+            //if any of these are =4, then a bingo was found
+            int case1 = isMarked[0] + isMarked[4] + isMarked[8] + isMarked[12];
+            int case2 = isMarked[1] + isMarked[5] + isMarked[9] + isMarked[13];
+            int case3 = isMarked[2] + isMarked[6] + isMarked[10] + isMarked[14];
+            int case4 = isMarked[3] + isMarked[7] + isMarked[11] + isMarked[15];
+            int case5 = isMarked[0] + isMarked[1] + isMarked[2] + isMarked[3];
+            int case6 = isMarked[4] + isMarked[5] + isMarked[6] + isMarked[7];
+            int case7 = isMarked[8] + isMarked[9] + isMarked[10] + isMarked[11];
+            int case8 = isMarked[12] + isMarked[13] + isMarked[14] + isMarked[15];
+            int case9 = isMarked[0] + isMarked[5] + isMarked[10] + isMarked[15];
+            int case10 = isMarked[3] + isMarked[6] + isMarked[9] + isMarked[12];   
 
-        var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10, case11, case12};
+            var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10};
 
-        int SumOfMarked = -1;
+            int SumOfMarked = -1;
 
-        foreach(var sol in board)
-        {
-            if(sol == 5 && bingoHad == false)
+            foreach(var sol in board)
             {
-                SumOfMarked++;
-                Debug.Log(gameObject.name + " " + SumOfMarked);
-                BingoTxt[SumOfMarked].SetActive(true);
-                SceneManager.LoadSceneAsync("WinPopup");
-                bingoHad = true;
+                if(sol == 4 && bingoHad == false)
+                {
+                    SumOfMarked++;
+                    Debug.Log(gameObject.name + " " + SumOfMarked);
+                    BingoTxt[SumOfMarked].SetActive(true);
+                    SceneManager.LoadSceneAsync("WinPopup");
+                    bingoHad = true;
+                }
+            }
+        
+        }else if(size == 5){
+            //if any of these are =5, then a bingo was found
+            int case1 = isMarked[0] + isMarked[5] + isMarked[10] + isMarked[15] + isMarked[20];
+            int case2 = isMarked[1] + isMarked[6] + isMarked[11] + isMarked[16] + isMarked[21];
+            int case3 = isMarked[2] + isMarked[7] + isMarked[12] + isMarked[17] + isMarked[22];
+            int case4 = isMarked[3] + isMarked[8] + isMarked[13] + isMarked[18] + isMarked[23];
+            int case5 = isMarked[4] + isMarked[9] + isMarked[14] + isMarked[19] + isMarked[24];
+            int case6 = isMarked[0] + isMarked[1] + isMarked[2] + isMarked[3] + isMarked[4];
+            int case7 = isMarked[5] + isMarked[6] + isMarked[7] + isMarked[8] + isMarked[9];
+            int case8 = isMarked[10] + isMarked[11] + isMarked[12] + isMarked[13] + isMarked[14];
+            int case9 = isMarked[15] + isMarked[16] + isMarked[17] + isMarked[18] + isMarked[19];
+            int case10 = isMarked[20] + isMarked[21] + isMarked[22] + isMarked[23] + isMarked[24];
+            int case11 = isMarked[0] + isMarked[6] + isMarked[12] + isMarked[18] + isMarked[24];
+            int case12 = isMarked[4] + isMarked[8] + isMarked[12] + isMarked[16] + isMarked[20];   
+
+            var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10, case11, case12};
+
+            int SumOfMarked = -1;
+
+            foreach(var sol in board)
+            {
+                if(sol == 5 && bingoHad == false)
+                {
+                    SumOfMarked++;
+                    Debug.Log(gameObject.name + " " + SumOfMarked);
+                    BingoTxt[SumOfMarked].SetActive(true);
+                    SceneManager.LoadSceneAsync("WinPopup");
+                    bingoHad = true;
+                }
+            }
+        }else if (size == 6){
+            //if any of these are =6, then a bingo was found
+            int case1 = isMarked[0] + isMarked[6] + isMarked[12] + isMarked[18] + isMarked[24] + isMarked[30];
+            int case2 = isMarked[1] + isMarked[7] + isMarked[13] + isMarked[19] + isMarked[25] + isMarked[31];
+            int case3 = isMarked[2] + isMarked[8] + isMarked[14] + isMarked[20] + isMarked[26] + isMarked[32];
+            int case4 = isMarked[3] + isMarked[9] + isMarked[15] + isMarked[21] + isMarked[27] + isMarked[33];
+            int case5 = isMarked[4] + isMarked[10] + isMarked[16] + isMarked[22] + isMarked[28] + isMarked[34];
+            int case6 = isMarked[5] + isMarked[11] + isMarked[17] + isMarked[23] + isMarked[29] + isMarked[35];
+            int case7 = isMarked[0] + isMarked[1] + isMarked[2] + isMarked[3] + isMarked[4] + isMarked[5];
+            int case8 = isMarked[6] + isMarked[7] + isMarked[8] + isMarked[9] + isMarked[10] + isMarked[11];
+            int case9 = isMarked[12] + isMarked[13] + isMarked[14] + isMarked[15] + isMarked[16] + isMarked[17];
+            int case10 = isMarked[18] + isMarked[19] + isMarked[20] + isMarked[21] + isMarked[22] + isMarked[23];
+            int case11 = isMarked[24] + isMarked[25] + isMarked[26] + isMarked[27] + isMarked[28] + isMarked[29];
+            int case12 = isMarked[30] + isMarked[31] + isMarked[32] + isMarked[33] + isMarked[34] + isMarked[35];
+            int case13 = isMarked[0] + isMarked[7] + isMarked[14] + isMarked[21] + isMarked[28] + isMarked[35];
+            int case14 = isMarked[5] + isMarked[10] + isMarked[15] + isMarked[20] + isMarked[25] + isMarked[30]; 
+
+            var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10, case11, case12, case13, case14};
+
+            int SumOfMarked = -1;
+
+            foreach(var sol in board)
+            {
+                if(sol == 6 && bingoHad == false)
+                {
+                    SumOfMarked++;
+                    Debug.Log(gameObject.name + " " + SumOfMarked);
+                    BingoTxt[SumOfMarked].SetActive(true);
+                    SceneManager.LoadSceneAsync("WinPopup");
+                    bingoHad = true;
+                }
             }
         }
     }   //
 
     void SetupBoard(){
+        bingoTable.GetComponent<GridLayoutGroup>().constraintCount = size;  //move board based on size
+        if(size == 4){
+            Vector3 tempVect = new Vector3(20, 0, 0);
+            bingoTableTransform.position = canvasTransform.position + tempVect;
+        }else if (size == 6){
+            Vector3 tempVect = new Vector3(-23, 40, 0);
+            bingoTableTransform.position = canvasTransform.position + tempVect;
+        }
+
+
         //put 0-50 on a list
         for (int i = 0; i <= 50; i++)
         {
             RefNumbers.Add(i);
         }
 
-        //select 25 numbers.
+        //select numButtons numbers.
         //choose 0-50, then compare to refnumbers
         //if it is on refnumbers, compare with environment and difficulty
         //based on that, maybe retry with a new number
         //otherwise, add it and set that number on refnumbers to -1, so you dont re-pick it
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < numButtons; i++)
         {
             bool retry = true;
             int RandomNumA;
@@ -161,18 +251,14 @@ public class generateTiles : MonoBehaviour
                 if(retry == false){             //if you made it here and retry = false, add the number to the list
                     Numbers.Add(RandomNumA);
                     RefNumbers[RandomNumA] = -1;
-                }else{
-                    Debug.Log("REROLL TRIGGERED:");
-                    Debug.Log(tilesArr[RandomNumA].objName);
-                    Debug.Log(RandomNumB);
                 }
             }
         }
 
         //put images on corresponding buttons based on list
-        for (int i = 0; i < 25; i++)
+        for (int i = 0; i < numButtons; i++)
         {
-            spriteObj[i].GetComponent<Image>().sprite = tileSprites[Numbers[i]];
+            spriteObj[i].gameObject.transform.GetChild(0).GetComponent<Image>().sprite = tileSprites[Numbers[i]];
         }
 
         //fill isMarked with zero
