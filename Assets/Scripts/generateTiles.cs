@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class tiles{
     public bool isChecked;
@@ -36,6 +37,7 @@ public class generateTiles : MonoBehaviour
     // Start is called before the first frame update
     private void Start(){
         numButtons = size*size;
+        isMarked = new int[numButtons];
         spriteObj = new List<GameObject>();
         //bingoTable.GetComponent<RectTransform>().position = new Vector3(0, 60, 0);
         bingoTableTransform = canvasTransform;
@@ -45,12 +47,17 @@ public class generateTiles : MonoBehaviour
         //bingoHad = false;
     }
 
+    private void Update()
+    {
+        CheckWin();
+    }
+
     public void makeButtons(){      //fill the table with button objects
         bingoTableTransform = bingoTable.transform;
 
         for(int i=0; i<numButtons; i++){
             GameObject tempButton = Instantiate(button00, bingoTableTransform);
-
+            tempButton.GetComponent<bingoTileButtonPressed>().buttonElementNumber = i;
             spriteObj.Add(tempButton);
         }
     }
@@ -77,9 +84,9 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 4 && bingoHad == false)
                 {
-                    SumOfMarked++;
-                    Debug.Log(gameObject.name + " " + SumOfMarked);
-                    BingoTxt[SumOfMarked].SetActive(true);
+                  //  SumOfMarked++;
+                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
+                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }
@@ -108,9 +115,9 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 5 && bingoHad == false)
                 {
-                    SumOfMarked++;
-                    Debug.Log(gameObject.name + " " + SumOfMarked);
-                    BingoTxt[SumOfMarked].SetActive(true);
+                  //  SumOfMarked++;
+                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
+                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }
@@ -140,9 +147,9 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 6 && bingoHad == false)
                 {
-                    SumOfMarked++;
-                    Debug.Log(gameObject.name + " " + SumOfMarked);
-                    BingoTxt[SumOfMarked].SetActive(true);
+                  //  SumOfMarked++;
+                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
+                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }

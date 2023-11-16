@@ -6,15 +6,18 @@ using UnityEngine.UI;
 
 public class bingoTileButtonPressed : MonoBehaviour
 {
+    public int buttonElementNumber;
     public GameObject spriteobject;
-    private Transform panelTransform;
+    private Transform panelTransform, canvasTransform, bingoTableTransform;
     string spriteName;
     TextMeshProUGUI textObj;
 
     private void Start()
     {
-        panelTransform = GameObject.Find("Canvas").transform.Find("Tile Description Pop Up");
-        Debug.Log(panelTransform.gameObject.name);
+        canvasTransform = GameObject.Find("Canvas").transform;
+        panelTransform = canvasTransform.Find("Tile Description Pop Up");
+        bingoTableTransform = canvasTransform.Find("bingoTable");
+//        Debug.Log(panelTransform.gameObject.name);
         textObj = panelTransform.Find("Text").GetComponent<TextMeshProUGUI>();
         spriteName = spriteobject.GetComponent<Image>().sprite.name;
         panelTransform.gameObject.SetActive(false);
@@ -28,6 +31,11 @@ public class bingoTileButtonPressed : MonoBehaviour
             Debug.Log(spriteName);
             panelTransform.gameObject.SetActive(true);
             textObj.text = spriteName;
+        }
+        else
+        {
+            bingoTableTransform.gameObject.GetComponent<generateTiles>().isMarked[buttonElementNumber] = 1;
+            
         }
     }
 }
