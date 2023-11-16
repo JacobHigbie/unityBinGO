@@ -14,4 +14,9 @@ public class WinPopup : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Main Menu");
     }
+
+    public void Continue()
+    {
+        SceneManager.LoadSceneAsync("GameBoard");
+    }
 }
