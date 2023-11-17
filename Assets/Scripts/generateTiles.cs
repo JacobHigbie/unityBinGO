@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
 public class tiles{
-    public bool isChecked;
-    public string objName;
     public int diffUrban = 0;
     public int diffPlains = 0;
     public int diffForest = 0;
@@ -21,6 +19,7 @@ public class generateTiles : MonoBehaviour
     public Button[] PlBtns;
     public GameObject[] BingoTxt;
     public Sprite[] tileSprites;
+    public Sprite[] markerSprites;
     public int[] isMarked;
     public List<int> Numbers = new List<int>();
     public List<int> RefNumbers = new List<int>();
@@ -33,28 +32,38 @@ public class generateTiles : MonoBehaviour
     public GameObject button00, bingoTable;
     public Transform bingoTableTransform, canvasTransform;
     public int numButtons;
+    public bool newGame = true;
 
     // Start is called before the first frame update
     private void Start(){
-        numButtons = size*size;
-        isMarked = new int[numButtons];
-        spriteObj = new List<GameObject>();
-        //bingoTable.GetComponent<RectTransform>().position = new Vector3(0, 60, 0);
-        bingoTableTransform = canvasTransform;
-        SetupTiles();
-        makeButtons();
-        SetupBoard();
-        //bingoHad = false;
+        if(newGame){
+            numButtons = size*size;
+            isMarked = new int[numButtons];
+            spriteObj = new List<GameObject>();
+            //bingoTable.GetComponent<RectTransform>().position = new Vector3(0, 60, 0);
+            bingoTableTransform = canvasTransform;
+            SetupTiles();
+            makeButtons();
+            SetupBoard();
+        }else{
+            newGame = true;
+        }
     }
 
     private void Update()
     {
+        for(int i=0; i<numButtons; i++){
+            if(isMarked[i] == 1){
+                spriteObj[i].gameObject.transform.GetChild(1).GetComponent<Image>().sprite = markerSprites[1];
+            }else{
+                spriteObj[i].gameObject.transform.GetChild(1).GetComponent<Image>().sprite = markerSprites[0];
+            }
+        }
         CheckWin();
     }
 
     public void makeButtons(){      //fill the table with button objects
         bingoTableTransform = bingoTable.transform;
-
         for(int i=0; i<numButtons; i++){
             GameObject tempButton = Instantiate(button00, bingoTableTransform);
             tempButton.GetComponent<bingoTileButtonPressed>().buttonElementNumber = i;
@@ -78,15 +87,11 @@ public class generateTiles : MonoBehaviour
 
             var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10};
 
-            int SumOfMarked = -1;
 
             foreach(var sol in board)
             {
                 if(sol == 4 && bingoHad == false)
                 {
-                  //  SumOfMarked++;
-                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
-                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }
@@ -109,15 +114,11 @@ public class generateTiles : MonoBehaviour
 
             var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10, case11, case12};
 
-            int SumOfMarked = -1;
 
             foreach(var sol in board)
             {
                 if(sol == 5 && bingoHad == false)
                 {
-                  //  SumOfMarked++;
-                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
-                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }
@@ -141,15 +142,10 @@ public class generateTiles : MonoBehaviour
 
             var board = new int[] { case1, case2, case3, case4, case5, case6, case7, case8, case9, case10, case11, case12, case13, case14};
 
-            int SumOfMarked = -1;
-
             foreach(var sol in board)
             {
                 if(sol == 6 && bingoHad == false)
                 {
-                  //  SumOfMarked++;
-                  //  Debug.Log(gameObject.name + " " + SumOfMarked);
-                  //  BingoTxt[SumOfMarked].SetActive(true);
                     SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
                 }
@@ -166,7 +162,6 @@ public class generateTiles : MonoBehaviour
             Vector3 tempVect = new Vector3(-23, 40, 0);
             bingoTableTransform.position = canvasTransform.position + tempVect;
         }
-
 
         //put 0-50 on a list
         for (int i = 0; i <= 50; i++)
@@ -266,6 +261,7 @@ public class generateTiles : MonoBehaviour
         for (int i = 0; i < numButtons; i++)
         {
             spriteObj[i].gameObject.transform.GetChild(0).GetComponent<Image>().sprite = tileSprites[Numbers[i]];
+            spriteObj[i].gameObject.transform.GetChild(1).GetComponent<Image>().sprite = markerSprites[0];
         }
 
         //fill isMarked with zero
@@ -285,290 +281,289 @@ public class generateTiles : MonoBehaviour
         for(int i = 0; i<=50; i++) {
             tiles tempTile = new tiles();
             tilesArr[i] = tempTile;
-            tilesArr[i].isChecked = false;
         }
 
         //setup tile names and difficulty
-        tilesArr[0].objName = "Bag";
+        //Bag
         tilesArr[0].diffUrban = 3;
         tilesArr[0].diffPlains = 1;
         tilesArr[0].diffForest = 1;
         tilesArr[0].diffDesert = 1;
 
-        tilesArr[1].objName = "Ball";
+        //Ball
         tilesArr[1].diffUrban = 2;
 
-        tilesArr[2].objName = "Bench";
+        //Bench
         tilesArr[2].diffUrban = 3;
         tilesArr[2].diffPlains = 1;
         tilesArr[2].diffForest = 1;
         tilesArr[2].diffDesert = 1;
 
-        tilesArr[3].objName = "Billboard with Food";
+        //Billboard with Food
         tilesArr[3].diffUrban = 3;
         tilesArr[3].diffPlains = 1;
         tilesArr[3].diffForest = 1;
         tilesArr[3].diffDesert = 1;
 
-        tilesArr[4].objName = "Billboard with a Person";
+        //Billboard with a Person
         tilesArr[4].diffUrban = 3;
         tilesArr[4].diffPlains = 1;
         tilesArr[4].diffForest = 1;
         tilesArr[4].diffDesert = 1;
 
-        tilesArr[5].objName = "Billboard with Phone Number";
+        //Billboard with Phone Number
         tilesArr[5].diffUrban = 3;
         tilesArr[5].diffPlains = 1;
         tilesArr[5].diffForest = 1;
         tilesArr[5].diffDesert = 1;
 
-        tilesArr[6].objName = "Bird of Prey";
+        //Bird of Prey
         tilesArr[6].diffPlains = 1;
         tilesArr[6].diffForest = 1;
         tilesArr[6].diffDesert = 1;
 
-        tilesArr[7].objName = "Blue Vehicle";
+        //Blue Vehicle
         tilesArr[7].diffUrban = 3;
         tilesArr[7].diffPlains = 2;
         tilesArr[7].diffForest = 2;
         tilesArr[7].diffDesert = 2;
 
-        tilesArr[8].objName = "Boat";
+        //Boat
         tilesArr[8].diffUrban = 1;
         tilesArr[8].diffPlains = 1;
         tilesArr[8].diffForest = 1;
         tilesArr[8].diffDesert = 1;
 
-        tilesArr[9].objName = "Body of Water";
+        //Body of Water
         tilesArr[9].diffUrban = 1;
         tilesArr[9].diffPlains = 1;
         tilesArr[9].diffForest = 1;
 
-        tilesArr[10].objName = "Bridge";
+        //Bridge
         tilesArr[10].diffUrban = 1;
         tilesArr[10].diffPlains = 1;
         tilesArr[10].diffForest = 1;
         tilesArr[10].diffDesert = 1;
 
-        tilesArr[11].objName = "Cactus";
+        //Cactus
         tilesArr[11].diffDesert = 3;
 
-        tilesArr[12].objName = "Caution Stripes";
+        //Caution Stripes
         tilesArr[12].diffUrban = 2;
         tilesArr[12].diffPlains = 2;
         tilesArr[12].diffForest = 2;
         tilesArr[12].diffDesert = 2;
 
-        tilesArr[13].objName = "Chain Link Fence";
+        //Chain Link Fence
         tilesArr[13].diffUrban = 3;
         tilesArr[13].diffPlains = 2;
         tilesArr[13].diffForest = 2;
         tilesArr[13].diffDesert = 2;
 
-        tilesArr[14].objName = "Cigarette";
+        //Cigarette
         tilesArr[14].diffUrban = 2;
         tilesArr[14].diffPlains = 1;
         tilesArr[14].diffForest = 1;
         tilesArr[14].diffDesert = 1;
 
-        tilesArr[15].objName = "Deer";
+        //Deer
         tilesArr[15].diffForest = 1;
 
-        tilesArr[16].objName = "Dirt Road";
+        //Dirt Road
         tilesArr[16].diffUrban = 2;
         tilesArr[16].diffPlains = 3;
         tilesArr[16].diffForest = 2;
         tilesArr[16].diffDesert = 3;
 
-        tilesArr[17].objName = "Dog";
+        //Dog
         tilesArr[17].diffUrban = 2;
         tilesArr[17].diffPlains = 1;
         tilesArr[17].diffForest = 1;
         tilesArr[17].diffDesert = 1;
 
-        tilesArr[18].objName = "Fallen Log";
+        //Fallen Log
         tilesArr[18].diffPlains = 2;
         tilesArr[18].diffForest = 3;
         tilesArr[18].diffDesert = 1;
 
-        tilesArr[19].objName = "Farm Vehicle";
+        //Farm Vehicle
         tilesArr[19].diffPlains = 2;
         tilesArr[19].diffDesert = 1;
 
-        tilesArr[20].objName = "Fire Escape";
+        //Fire Escape
         tilesArr[20].diffUrban = 3;
 
-        tilesArr[21].objName = "Firetruck";
+        //Firetruck
         tilesArr[21].diffUrban = 1;
         tilesArr[21].diffPlains = 1;
         tilesArr[21].diffForest = 1;
         tilesArr[21].diffDesert = 1;
 
-        tilesArr[22].objName = "Flag";
+        //Flag
         tilesArr[22].diffUrban = 3;
         tilesArr[22].diffPlains = 3;
         tilesArr[22].diffForest = 3;
         tilesArr[22].diffDesert = 3;
 
-        tilesArr[23].objName = "Graffiti";
+        //Graffiti
         tilesArr[23].diffUrban = 3;
         tilesArr[23].diffPlains = 2;
         tilesArr[23].diffForest = 2;
         tilesArr[23].diffDesert = 2;
 
-        tilesArr[24].objName = "Green Vehicle";
+        //Green Vehicle
         tilesArr[23].diffUrban = 2;
         tilesArr[23].diffPlains = 1;
         tilesArr[23].diffForest = 1;
         tilesArr[23].diffDesert = 1;
 
-        tilesArr[25].objName = "Hard Hat";
+        //Hard Hat
         tilesArr[25].diffUrban = 2;
         tilesArr[25].diffPlains = 1;
         tilesArr[25].diffForest = 1;
         tilesArr[25].diffDesert = 1;
 
-        tilesArr[26].objName = "Jeep";
+        //Jeep
         tilesArr[26].diffUrban = 3;
         tilesArr[26].diffPlains = 2;
         tilesArr[26].diffForest = 2;
         tilesArr[26].diffDesert = 2;
 
-        tilesArr[27].objName = "Ladder";
+        //Ladder
         tilesArr[27].diffUrban = 3;
         tilesArr[27].diffPlains = 2;
         tilesArr[27].diffForest = 2;
         tilesArr[27].diffDesert = 2;
 
-        tilesArr[28].objName = "Litter";
+        //Litter
         tilesArr[28].diffUrban = 3;
         tilesArr[28].diffPlains = 3;
         tilesArr[28].diffForest = 3;
         tilesArr[28].diffDesert = 3;
 
-        tilesArr[29].objName = "Mile Marker";
+        //Mile Marker
         tilesArr[29].diffUrban = 3;
         tilesArr[29].diffPlains = 3;
         tilesArr[29].diffForest = 3;
         tilesArr[29].diffDesert = 3;
 
-        tilesArr[30].objName = "Mobile Home";
+        //Mobile Home
         tilesArr[30].diffUrban = 1;
         tilesArr[30].diffPlains = 1;
         tilesArr[30].diffForest = 1;
         tilesArr[30].diffDesert = 1;
 
-        tilesArr[31].objName = "No Parking Zone";
+        //No Parking Zone
         tilesArr[31].diffUrban = 3;
         tilesArr[31].diffPlains = 1;
         tilesArr[31].diffForest = 1;
         tilesArr[31].diffDesert = 1;
 
-        tilesArr[32].objName = "Pickett Fence";
+        //Pickett Fence
         tilesArr[32].diffUrban = 2;
         tilesArr[32].diffPlains = 1;
         tilesArr[32].diffForest = 1;
         tilesArr[32].diffDesert = 1;
 
-        tilesArr[33].objName = "Pickup Truck";
+        //Pickup Truck
         tilesArr[33].diffUrban = 3;
         tilesArr[33].diffPlains = 3;
         tilesArr[33].diffForest = 3;
         tilesArr[33].diffDesert = 3;
 
-        tilesArr[34].objName = "Ranch Fence";
+        //Ranch Fence
         tilesArr[34].diffUrban = 1;
         tilesArr[34].diffPlains = 3;
         tilesArr[34].diffForest = 2;
         tilesArr[34].diffDesert = 2;
 
-        tilesArr[35].objName = "Recycling Symbol";
+        //Recycling Symbol
         tilesArr[35].diffUrban = 3;
         tilesArr[35].diffPlains = 1;
         tilesArr[35].diffForest = 1;
         tilesArr[35].diffDesert = 1;
 
-        tilesArr[36].objName = "Red Vehicle";
+        //Red Vehicle
         tilesArr[36].diffUrban = 3;
         tilesArr[36].diffPlains = 3;
         tilesArr[36].diffForest = 3;
         tilesArr[36].diffDesert = 3;
 
-        tilesArr[37].objName = "Roadkill";
+        //roadkill
         tilesArr[37].diffUrban = 1;
         tilesArr[37].diffPlains = 1;
         tilesArr[37].diffForest = 1;
         tilesArr[37].diffDesert = 1;
 
-        tilesArr[38].objName = "Railroad Tracks";
+        //Railroad Tracks
         tilesArr[38].diffUrban = 2;
         tilesArr[38].diffPlains = 1;
         tilesArr[38].diffForest = 1;
         tilesArr[38].diffDesert = 1;
 
-        tilesArr[39].objName = "Smoke";
+        //Smoke
         tilesArr[39].diffUrban = 2;
         tilesArr[39].diffPlains = 2;
         tilesArr[39].diffForest = 2;
         tilesArr[39].diffDesert = 2;
 
-        tilesArr[40].objName = "Statue";
+        //Statue
         tilesArr[40].diffUrban = 2;
         tilesArr[40].diffPlains = 1;
         tilesArr[40].diffForest = 1;
         tilesArr[40].diffDesert = 1;
 
-        tilesArr[41].objName = "Stop Sign";
+        //Stop Sign
         tilesArr[41].diffUrban = 3;
         tilesArr[41].diffPlains = 3;
         tilesArr[41].diffForest = 3;
         tilesArr[41].diffDesert = 3;
 
-        tilesArr[42].objName = "Street Gutter";
+        //Street Gutter
         tilesArr[42].diffUrban = 3;
 
-        tilesArr[43].objName = "Stump";
+        //Stump
         tilesArr[43].diffPlains = 2;
         tilesArr[43].diffForest = 2;
         tilesArr[43].diffDesert = 1;
 
-        tilesArr[44].objName = "Sunglasses";
+        //Sunglasses
         tilesArr[44].diffUrban = 3;
         tilesArr[44].diffPlains = 1;
         tilesArr[44].diffForest = 1;
         tilesArr[44].diffDesert = 1;
 
-        tilesArr[45].objName = "Building with 3+ Floors";
+        //Building with 3+ Floors
         tilesArr[45].diffUrban = 3;
         tilesArr[45].diffPlains = 1;
         tilesArr[45].diffForest = 1;
         tilesArr[45].diffDesert = 1;
 
-        tilesArr[46].objName = "Traffic Cone";
+        //Traffic Cone
         tilesArr[46].diffUrban = 2;
         tilesArr[46].diffPlains = 2;
         tilesArr[46].diffForest = 2;
         tilesArr[46].diffDesert = 2;
 
-        tilesArr[47].objName = "Trailer";
+        //Trailer
         tilesArr[47].diffUrban = 2;
         tilesArr[47].diffPlains = 2;
         tilesArr[47].diffForest = 2;
         tilesArr[47].diffDesert = 2;
 
-        tilesArr[48].objName = "Wildflowers";
+        //Wildflowers
         tilesArr[48].diffUrban = 2;
         tilesArr[48].diffPlains = 2;
         tilesArr[48].diffForest = 3;
         tilesArr[48].diffDesert = 2;
 
-        tilesArr[49].objName = "Yellow Vehicle";
+        //Yellow Vehicle
         tilesArr[49].diffUrban = 2;
         tilesArr[49].diffPlains = 1;
         tilesArr[49].diffForest = 1;
         tilesArr[49].diffDesert = 1;
 
-        tilesArr[50].objName = "Yield Sign";
+        //Yield Sign
         tilesArr[50].diffUrban = 3;
         tilesArr[50].diffPlains = 2;
         tilesArr[50].diffForest = 2;

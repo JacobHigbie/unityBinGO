@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinPopup.unity
     guid: b83bcb7ae16ba7c4cbb293b1699768b3
+  - enabled: 1
+    path: Assets/Scenes/howToPlay.unity
+    guid: b36dd21218894eb4fb18c27a7ada6041
   m_configObjects: {}

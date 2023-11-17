@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gameBoardScript : MonoBehaviour
+public class howToScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,12 +16,9 @@ public class gameBoardScript : MonoBehaviour
     {
         
     }
-    
-    public void ReturnToMenu(){
-        SceneManager.LoadSceneAsync("Main Menu");
-    }
 
-    public void goToHowToPlay(){
-        SceneManager.LoadSceneAsync("howToPlay");
+    public void ReturnToGameBoard(){
+        //generateTiles.newGame = false;
+        SceneManager.LoadSceneAsync("GameBoard");
     }
 }
