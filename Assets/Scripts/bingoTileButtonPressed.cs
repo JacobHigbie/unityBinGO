@@ -28,7 +28,7 @@ public class bingoTileButtonPressed : MonoBehaviour
     {
         if (descriptionModeToggle.detailMode)
         {
-            Debug.Log(spriteName);
+            //Debug.Log(spriteName);
             panelTransform.gameObject.SetActive(true);
             switch(spriteName){
             case "bag": textObj.text = "Any Bag"; break;

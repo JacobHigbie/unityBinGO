@@ -32,7 +32,7 @@ public class generateTiles : MonoBehaviour
     public GameObject button00, bingoTable;
     public Transform bingoTableTransform, canvasTransform;
     public int numButtons;
-    public bool newGame = true;
+    public static bool newGame = true;
 
     // Start is called before the first frame update
     private void Start(){

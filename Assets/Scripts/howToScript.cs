@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class howToScript : MonoBehaviour
 {
+    private Transform panelTransform, canvasTransform, bingoTableTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        canvasTransform = GameObject.Find("Canvas").transform;
+        panelTransform = canvasTransform.Find("howToPopup");
+        panelTransform.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -17,8 +21,7 @@ public class howToScript : MonoBehaviour
         
     }
 
-    public void ReturnToGameBoard(){
-        //generateTiles.newGame = false;
-        SceneManager.LoadSceneAsync("GameBoard");
+    public void buttonPressed(){
+    panelTransform.gameObject.SetActive(true);
     }
 }
