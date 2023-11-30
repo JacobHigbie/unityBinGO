@@ -400,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 204358649}
   - component: {fileID: 204358648}
+  - component: {fileID: 204358650}
   m_Layer: 0
   m_Name: binGO!_cover_art
   m_TagString: Untagged
@@ -474,6 +475,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204358650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204358647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5b0de1253a0b741bbb0e82da9b78f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObject: {fileID: 204358647}
+  light: {fileID: 21300000, guid: 9515cd91e21a4ff4d9370186e1b45aaa, type: 3}
+  dark: {fileID: 21300000, guid: 8b77e69d10e23a4419c4bd600c4bb4af, type: 3}
 --- !u!1 &278255109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa43291be30bd8479edf3dcc175b2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteObject: {fileID: 0}
+  light: {fileID: 0}
+  dark: {fileID: 0}
 --- !u!1 &1021183522
 GameObject:
   m_ObjectHideFlags: 0

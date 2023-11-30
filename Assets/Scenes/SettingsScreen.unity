@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 194468261}
   - component: {fileID: 194468260}
   - component: {fileID: 194468259}
-  - component: {fileID: 194468258}
+  - component: {fileID: 194468262}
   m_Layer: 5
   m_Name: modedropdown
   m_TagString: Untagged
@@ -162,21 +162,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61, y: 634}
+  m_AnchoredPosition: {x: 22, y: 634}
   m_SizeDelta: {x: 723.472, y: 151.608}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &194468258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194468256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b3a48db9212a654ba598dbbb65b01fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &194468259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,14 +222,14 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 194468258}
-        m_TargetAssemblyTypeName: setupScript, Assembly-CSharp
-        m_MethodName: DiffDropdown
-        m_Mode: 0
+      - m_Target: {fileID: 194468262}
+        m_TargetAssemblyTypeName: settingsScript, Assembly-CSharp
+        m_MethodName: modedropdown
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -285,6 +273,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194468256}
   m_CullTransparentMesh: 1
+--- !u!114 &194468262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194468256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aee5ac50e3a3544b5c25884f250ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252856903
 GameObject:
   m_ObjectHideFlags: 0

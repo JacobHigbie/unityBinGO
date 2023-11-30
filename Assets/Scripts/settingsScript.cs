@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class settingsScript : MonoBehaviour
 {
+    public static bool colors = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +30,13 @@ public class settingsScript : MonoBehaviour
         {
             case 0:
                 //light mode
-                
+                colors = false;
+                Debug.Log(colors);
                 break;
             case 1:
                 //dark mode
-
+                colors = false;
+                Debug.Log(colors);
                 break;
         }
     }
