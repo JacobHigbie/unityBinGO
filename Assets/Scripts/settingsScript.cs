@@ -27,7 +27,7 @@ public class settingsScript : MonoBehaviour
         {
             case 0:
                 //light mode
-
+                
                 break;
             case 1:
                 //dark mode
