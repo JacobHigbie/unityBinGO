@@ -20,4 +20,19 @@ public class settingsScript : MonoBehaviour
     public void ReturnToMenu(){
         SceneManager.LoadSceneAsync("Main Menu");
     }
+
+    public void modedropdown(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                //light mode
+
+                break;
+            case 1:
+                //dark mode
+
+                break;
+        }
+    }
 }
