@@ -17,7 +17,7 @@ public class setupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //buttons to navigate screens

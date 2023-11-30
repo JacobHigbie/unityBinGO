@@ -92,8 +92,8 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 4 && bingoHad == false)
                 {
-                    SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
+                    WinPopup.showWin = true;
                 }
             }
         
@@ -119,8 +119,8 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 5 && bingoHad == false)
                 {
-                    SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
+                    WinPopup.showWin = true;
                 }
             }
         }else if (size == 6){
@@ -146,8 +146,8 @@ public class generateTiles : MonoBehaviour
             {
                 if(sol == 6 && bingoHad == false)
                 {
-                    SceneManager.LoadSceneAsync("WinPopup");
                     bingoHad = true;
+                    WinPopup.showWin = true;
                 }
             }
         }

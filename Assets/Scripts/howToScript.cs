@@ -18,7 +18,7 @@ public class howToScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(gameObject.name);
     }
 
     public void buttonPressed(){

@@ -5,6 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class WinPopup : MonoBehaviour
 {
+    public static bool showWin;
+
+    public GameObject winPanel;
+
+    bool ifCont;
+    
+    void Start()
+    {
+        ifCont = false;
+        showWin = false;
+    }
+    
+
+    void Update()   
+    {
+        Debug.Log("hereis" + ifCont);
+        Debug.Log("herenow" + showWin);
+        if (!ifCont && showWin)
+        {
+            winPanel.SetActive(true);
+        }
+        else
+        {
+            winPanel.SetActive(false);
+        }
+    }
+    
     public void PlayAgain()
     {
         SceneManager.LoadSceneAsync("GameSetupScreen");
@@ -17,6 +44,6 @@ public class WinPopup : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadSceneAsync("GameBoard");
+        ifCont = true;
     }
 }
