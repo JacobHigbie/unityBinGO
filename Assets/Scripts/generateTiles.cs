@@ -28,7 +28,7 @@ public class generateTiles : MonoBehaviour
     public static int size;
     public bool bingoHad;
     public List<GameObject> spriteObj;
-    public tiles[] tilesArr = new tiles[51];
+    public tiles[] tilesArr = new tiles[100];
     public GameObject button00, bingoTable;
     public Transform bingoTableTransform, canvasTransform;
     public int numButtons;
@@ -163,14 +163,14 @@ public class generateTiles : MonoBehaviour
             bingoTableTransform.position = canvasTransform.position + tempVect;
         }
 
-        //put 0-50 on a list
-        for (int i = 0; i <= 50; i++)
+        //put 0-99 on a list
+        for (int i = 0; i <= 99; i++)
         {
             RefNumbers.Add(i);
         }
 
         //select numButtons numbers.
-        //choose 0-50, then compare to refnumbers
+        //choose 0-99, then compare to refnumbers
         //if it is on refnumbers, compare with environment and difficulty
         //based on that, maybe retry with a new number
         //otherwise, add it and set that number on refnumbers to -1, so you dont re-pick it
@@ -180,7 +180,7 @@ public class generateTiles : MonoBehaviour
             int RandomNumA;
             int RandomNumB = 0;
             while(retry){                                   //go until you get a valid number
-                RandomNumA = Random.Range(0, 50);
+                RandomNumA = Random.Range(0, 99);
                 if(RefNumbers[RandomNumA] == RandomNumA){   //prevents repeat numbers
                     retry = false;
                     if(environment == 0){                           //urban
@@ -278,7 +278,7 @@ public class generateTiles : MonoBehaviour
     }
 
     void SetupTiles(){
-        for(int i = 0; i<=50; i++) {
+        for(int i = 0; i<=99; i++) {
             tiles tempTile = new tiles();
             tilesArr[i] = tempTile;
         }
@@ -568,5 +568,284 @@ public class generateTiles : MonoBehaviour
         tilesArr[50].diffPlains = 2;
         tilesArr[50].diffForest = 2;
         tilesArr[50].diffDesert = 2;
+
+        //atm
+        tilesArr[51].diffUrban = 2;
+        tilesArr[51].diffPlains = 1;
+        tilesArr[51].diffForest = 1;
+        tilesArr[51].diffDesert = 1;
+
+        //bare tree
+        tilesArr[52].diffUrban = 1;
+        tilesArr[52].diffPlains = 2;
+        tilesArr[52].diffForest = 3;
+        tilesArr[52].diffDesert = 1;
+
+        //beard
+        tilesArr[53].diffUrban = 3;
+        tilesArr[53].diffPlains = 2;
+        tilesArr[53].diffForest = 2;
+        tilesArr[53].diffDesert = 2;
+
+        //bicycle
+        tilesArr[54].diffUrban = 2;
+        tilesArr[54].diffPlains = 1;
+        tilesArr[54].diffForest = 1;
+        tilesArr[54].diffDesert = 1;
+
+        //bus
+        tilesArr[55].diffUrban = 3;
+        tilesArr[55].diffPlains = 1;
+        tilesArr[55].diffForest = 1;
+        tilesArr[55].diffDesert = 1;
+
+        //bus stop
+        tilesArr[56].diffUrban = 3;
+
+        //clearance sign
+        tilesArr[57].diffUrban = 3;
+        tilesArr[57].diffPlains = 1;
+        tilesArr[57].diffForest = 1;
+        tilesArr[57].diffDesert = 1;
+
+        //construction vehicle
+        tilesArr[58].diffUrban = 2;
+        tilesArr[58].diffPlains = 2;
+        tilesArr[58].diffForest = 2;
+        tilesArr[58].diffDesert = 2;
+
+        //cow
+        tilesArr[59].diffPlains = 2;
+
+        //cross
+        tilesArr[60].diffUrban = 2;
+        tilesArr[60].diffPlains = 1;
+        tilesArr[60].diffForest = 1;
+        tilesArr[60].diffDesert = 1;
+
+        //dirt_pile
+        tilesArr[61].diffUrban = 2;
+        tilesArr[61].diffPlains = 2;
+        tilesArr[61].diffForest = 2;
+        tilesArr[61].diffDesert = 2;
+
+        //dont enter sign
+        tilesArr[62].diffUrban = 3;
+        tilesArr[62].diffPlains = 2;
+        tilesArr[62].diffForest = 2;
+        tilesArr[62].diffDesert = 2;
+
+        //dumpster
+        tilesArr[63].diffUrban = 3;
+        tilesArr[63].diffPlains = 2;
+        tilesArr[63].diffForest = 2;
+        tilesArr[63].diffDesert = 2;
+
+        //eight
+        tilesArr[64].diffUrban = 3;
+        tilesArr[64].diffPlains = 3;
+        tilesArr[64].diffForest = 3;
+        tilesArr[64].diffDesert = 3;
+
+        //five
+        tilesArr[65].diffUrban = 3;
+        tilesArr[65].diffPlains = 3;
+        tilesArr[65].diffForest = 3;
+        tilesArr[65].diffDesert = 3;
+
+        //four
+        tilesArr[66].diffUrban = 3;
+        tilesArr[66].diffPlains = 3;
+        tilesArr[66].diffForest = 3;
+        tilesArr[66].diffDesert = 3;
+
+        //gravestone
+        tilesArr[67].diffUrban = 1;
+        tilesArr[67].diffPlains = 1;
+        tilesArr[67].diffForest = 1;
+        tilesArr[67].diffDesert = 1;
+
+        //hat
+        tilesArr[68].diffUrban = 3;
+        tilesArr[68].diffPlains = 2;
+        tilesArr[68].diffForest = 2;
+        tilesArr[68].diffDesert = 2;
+
+        //hay bale
+        tilesArr[69].diffPlains = 2;
+
+        //lightpost
+        tilesArr[70].diffUrban = 3;
+        tilesArr[70].diffPlains = 2;
+        tilesArr[70].diffForest = 2;
+        tilesArr[70].diffDesert = 2;
+
+        //motorbike
+        tilesArr[71].diffUrban = 3;
+        tilesArr[71].diffPlains = 2;
+        tilesArr[71].diffForest = 2;
+        tilesArr[71].diffDesert = 2;
+
+        //nine
+        tilesArr[72].diffUrban = 3;
+        tilesArr[72].diffPlains = 3;
+        tilesArr[72].diffForest = 3;
+        tilesArr[72].diffDesert = 3;
+
+        //no tresspass sign
+        tilesArr[73].diffUrban = 2;
+        tilesArr[73].diffPlains = 3;
+        tilesArr[73].diffForest = 3;
+        tilesArr[73].diffDesert = 3;
+
+        //oil tanker
+        tilesArr[74].diffUrban = 1;
+        tilesArr[74].diffPlains = 1;
+        tilesArr[74].diffForest = 1;
+        tilesArr[74].diffDesert = 1;
+
+        //one
+        tilesArr[75].diffUrban = 3;
+        tilesArr[75].diffPlains = 3;
+        tilesArr[75].diffForest = 3;
+        tilesArr[75].diffDesert = 3;
+
+        //out of state plate
+        tilesArr[76].diffUrban = 3;
+        tilesArr[76].diffPlains = 3;
+        tilesArr[76].diffForest = 3;
+        tilesArr[76].diffDesert = 3;
+
+        //overpass
+        tilesArr[77].diffUrban = 3;
+        tilesArr[77].diffPlains = 1;
+        tilesArr[77].diffForest = 1;
+        tilesArr[77].diffDesert = 1;
+
+        //phone lines
+        tilesArr[78].diffUrban = 3;
+        tilesArr[78].diffPlains = 3;
+        tilesArr[78].diffForest = 3;
+        tilesArr[78].diffDesert = 3;
+
+        //plane
+        tilesArr[79].diffUrban = 2;
+        tilesArr[79].diffPlains = 2;
+        tilesArr[79].diffForest = 2;
+        tilesArr[79].diffDesert = 2;
+
+        //police
+        tilesArr[80].diffUrban = 2;
+        tilesArr[80].diffPlains = 2;
+        tilesArr[80].diffForest = 2;
+        tilesArr[80].diffDesert = 2;
+
+        //porta potty
+        tilesArr[81].diffUrban = 2;
+        tilesArr[81].diffPlains = 2;
+        tilesArr[81].diffForest = 2;
+        tilesArr[81].diffDesert = 2;
+
+        //potted plant
+        tilesArr[82].diffUrban = 3;
+        tilesArr[82].diffPlains = 1;
+        tilesArr[82].diffForest = 1;
+        tilesArr[82].diffDesert = 1;
+
+        //power lines
+        tilesArr[83].diffUrban = 1;
+        tilesArr[83].diffPlains = 2;
+        tilesArr[83].diffForest = 1;
+        tilesArr[83].diffDesert = 2;
+
+        //satellite
+        tilesArr[84].diffUrban = 3;
+        tilesArr[84].diffPlains = 1;
+        tilesArr[84].diffForest = 1;
+        tilesArr[84].diffDesert = 1;
+
+        //seven
+        tilesArr[85].diffUrban = 3;
+        tilesArr[85].diffPlains = 3;
+        tilesArr[85].diffForest = 3;
+        tilesArr[85].diffDesert = 3;
+
+        //silo
+        tilesArr[86].diffUrban = 1;
+        tilesArr[86].diffPlains = 1;
+        tilesArr[86].diffDesert = 1;
+
+        //six
+        tilesArr[87].diffUrban = 3;
+        tilesArr[87].diffPlains = 3;
+        tilesArr[87].diffForest = 3;
+        tilesArr[87].diffDesert = 3;
+
+        //solar panel
+        tilesArr[88].diffUrban = 2;
+        tilesArr[88].diffPlains = 1;
+        tilesArr[88].diffForest = 1;
+        tilesArr[88].diffDesert = 1;
+
+        //star
+        tilesArr[89].diffUrban = 3;
+        tilesArr[89].diffPlains = 3;
+        tilesArr[89].diffForest = 3;
+        tilesArr[89].diffDesert = 3;
+
+        //three
+        tilesArr[90].diffUrban = 3;
+        tilesArr[90].diffPlains = 3;
+        tilesArr[90].diffForest = 3;
+        tilesArr[90].diffDesert = 3;
+
+        //two
+        tilesArr[91].diffUrban = 3;
+        tilesArr[91].diffPlains = 3;
+        tilesArr[91].diffForest = 3;
+        tilesArr[91].diffDesert = 3;
+
+        //uturn sign
+        tilesArr[92].diffUrban = 2;
+        tilesArr[92].diffPlains = 2;
+        tilesArr[92].diffForest = 2;
+        tilesArr[92].diffDesert = 2;
+
+        //vanity plate
+        tilesArr[93].diffUrban = 1;
+        tilesArr[93].diffPlains = 1;
+        tilesArr[93].diffForest = 1;
+        tilesArr[93].diffDesert = 1;
+
+        //vine
+        tilesArr[94].diffUrban = 1;
+        tilesArr[94].diffPlains = 2;
+        tilesArr[94].diffForest = 3;
+
+        //water tower
+        tilesArr[95].diffUrban = 3;
+        tilesArr[95].diffPlains = 2;
+        tilesArr[95].diffForest = 1;
+        tilesArr[95].diffDesert = 2;
+
+        //waterflow
+        tilesArr[96].diffUrban = 1;
+        tilesArr[96].diffPlains = 2;
+        tilesArr[96].diffForest = 2;
+
+        //work zone sign
+        tilesArr[97].diffUrban = 2;
+        tilesArr[97].diffPlains = 1;
+        tilesArr[97].diffForest = 1;
+        tilesArr[97].diffDesert = 1;
+
+        //zero
+        tilesArr[98].diffUrban = 3;
+        tilesArr[98].diffPlains = 3;
+        tilesArr[98].diffForest = 3;
+        tilesArr[98].diffDesert = 3;
+
+        //crop fields
+        tilesArr[99].diffPlains = 2;
     }
 }
