@@ -30,7 +30,7 @@ public class settingsScript : MonoBehaviour
         {
             case 0:
                 //light mode
-                colors = false;
+                colors = true;
                 Debug.Log(colors);
                 break;
             case 1:

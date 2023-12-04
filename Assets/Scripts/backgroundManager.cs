@@ -12,6 +12,7 @@ public class backgroundManager : MonoBehaviour
     {
         if (settingsScript.colors)
         {
+            Debug.Log("heyo");
             spriteObject.GetComponent<SpriteRenderer>().sprite = light;
         }
         else
