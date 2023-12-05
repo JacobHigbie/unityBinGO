@@ -10,6 +10,12 @@ public class backgroundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (settingsScript.colors)
         {
             Debug.Log("heyo");
@@ -19,11 +25,5 @@ public class backgroundManager : MonoBehaviour
         {
             spriteObject.GetComponent<SpriteRenderer>().sprite = dark;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

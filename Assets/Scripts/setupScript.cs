@@ -88,4 +88,16 @@ public class setupScript : MonoBehaviour
                 break;
         }
     }
+
+    public void placeholder()
+    {
+        if (settingsScript.colors == false)
+        {
+            settingsScript.colors = true;
+        }
+        else if (settingsScript.colors == true)
+        {
+            settingsScript.colors = false;
+        }
+    }
 }

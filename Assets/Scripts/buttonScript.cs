@@ -32,4 +32,16 @@ public class buttonScript : MonoBehaviour
     public void EnterLogin(){
         SceneManager.LoadSceneAsync("LoginScreen");
     }
+
+    public void placeholder()
+    {
+        if (settingsScript.colors == false)
+        {
+            settingsScript.colors = true;
+        }
+        else if (settingsScript.colors == true)
+        {
+            settingsScript.colors = false;
+        }
+    }
 }
