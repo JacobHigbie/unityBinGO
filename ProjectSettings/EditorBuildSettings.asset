@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameSetupScreen.unity
     guid: 8160f3ed0e711534586a819750c15bc9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SettingsScreen.unity
     guid: 8e9448c2b8f62194a84a3d9149134cfc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoginScreen.unity
     guid: e2ed59c7aad67e14ca98f92be9575c09
   - enabled: 1
