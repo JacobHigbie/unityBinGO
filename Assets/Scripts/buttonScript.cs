@@ -33,7 +33,7 @@ public class buttonScript : MonoBehaviour
         SceneManager.LoadSceneAsync("LoginScreen");
     }
 
-    public void placeholder()
+    public void lightModeToggle()
     {
         if (settingsScript.colors == false)
         {

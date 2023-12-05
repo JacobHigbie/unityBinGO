@@ -89,7 +89,7 @@ public class setupScript : MonoBehaviour
         }
     }
 
-    public void placeholder()
+    public void lightModeToggle()
     {
         if (settingsScript.colors == false)
         {
